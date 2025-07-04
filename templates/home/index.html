@@ -1,0 +1,599 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="YogConnect - Your hub for Yoga and Scientific Fitness Connections">
+  <title>YogConnect - Transform Your Life Through Yoga</title>
+  <link rel="icon" href="{% static 'media/favicon.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}?v=8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Animation -->
+  <div id="bg-animation"></div>
+
+  <!-- Search Overlay -->
+  <div id="searchOverlay" class="search-overlay">
+    <div class="search-popup">
+      <input type="text" id="popupSearchBox" placeholder="Search trainers, programs..." oninput="handleSearchInput(this.value)">
+      <div id="popupSearchDropdown" class="search-dropdown"></div>
+      <div class="search-categories">
+        <h3>Start Here</h3>
+        <div class="search-item" onclick="window.location.href='/trainer'">Find a Trainer</div>
+        <h3>Trending Trainers</h3>
+        <div class="search-item" onclick="window.location.href='/trainer?type=trending'">Top Rated This Week</div>
+        <h3>Specialized Yoga</h3>
+        <div class="search-item" onclick="window.location.href='/trainer?type=hatha'">Hatha Yoga</div>
+        <div class="search-item" onclick="window.location.href='/trainer?type=ashtanga'">Ashtanga Yoga</div>
+        <div class="search-item" onclick="window.location.href='/trainer?type=prenatal'">Prenatal Yoga</div>
+        <div class="search-item" onclick="window.location.href='/trainer?type=therapeutic'">Therapeutic Yoga</div>
+      </div>
+    </div>
+    <div class="overlay-background" onclick="toggleSearch(false)"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">YogConnect</div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="/teacherTraining">Teacher Training (TTC)</a></li>
+        <li><a href="/registration">Registration</a></li>
+        <li><a href="/trainer/add-trainer">Apply to train</a></li>
+      </ul>
+      <div class="search-icon" onclick="toggleSearch(true)">
+        <img src="{% static 'media/search-icon.svg' %}" alt="Search" height="24">
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Transform Your Life Through Yoga</h1>
+      <p class="hero-subtitle">Discover balance, strength and peace with our certified yoga instructors</p>
+      <div class="hero-buttons">
+        <a href="#programs" class="btn-primary">Explore Programs</a>
+        <a href="#consultation" class="btn-secondary">Free Consultation</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="{% static 'media/hero-yoga.png' %}" alt="Woman practicing yoga" class="floating">
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stat-card">
+      <div class="stat-number" data-count="5000">0</div>
+      <div class="stat-label">Happy Students</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-count="50">0</div>
+      <div class="stat-label">Certified Trainers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-count="100">0</div>
+      <div class="stat-label">Classes Weekly</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-count="15">0</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="about-section">
+    <div class="section-header">
+      <h2>Who We Are</h2>
+      <p class="section-subtitle">Our journey and philosophy</p>
+    </div>
+    <div class="about-content">
+      <div class="about-image">
+        <div class="image-container">
+          <img src="{% static 'media/about-yoga.jpg' %}" alt="YogConnect team" class="about-main-img">
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3>Our Story</h3>
+        <p>Founded in 2010 by Master Diwakar, YogConnect began as a small studio with a big vision - to make authentic yoga accessible to everyone. What started as a single classroom has now blossomed into a thriving community of over 5,000 practitioners across India.</p>
+        
+        <h3>Our Approach</h3>
+        <p>We blend traditional yoga wisdom with modern scientific understanding to create practices that are both spiritually uplifting and physically beneficial. Our certified instructors undergo rigorous training in both yoga techniques and anatomy to ensure safe, effective guidance.</p>
+        
+        <div class="mission-vision">
+          <div class="mv-card">
+            <i class="fas fa-eye"></i>
+            <h4>Vision</h4>
+            <p>To create a world where yoga is an integral part of every individual's wellness journey.</p>
+          </div>
+          <div class="mv-card">
+            <i class="fas fa-bullseye"></i>
+            <h4>Mission</h4>
+            <p>To deliver authentic, personalized yoga instruction that transforms lives at every level.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yoga Benefits Section -->
+  <section class="benefits-section">
+    <div class="section-header">
+      <h2>Benefits of Yoga</h2>
+      <p class="section-subtitle">Transform your body and mind</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fas fa-heartbeat"></i>
+        </div>
+        <h3>Physical Health</h3>
+        <ul>
+          <li>Improves flexibility and balance</li>
+          <li>Strengthens muscles and bones</li>
+          <li>Enhances cardiovascular health</li>
+          <li>Boosts immune function</li>
+        </ul>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3>Mental Wellbeing</h3>
+        <ul>
+          <li>Reduces stress and anxiety</li>
+          <li>Improves focus and concentration</li>
+          <li>Enhances sleep quality</li>
+          <li>Promotes emotional balance</li>
+        </ul>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fas fa-spa"></i>
+        </div>
+        <h3>Spiritual Growth</h3>
+        <ul>
+          <li>Deepens self-awareness</li>
+          <li>Fosters inner peace</li>
+          <li>Connects mind, body & spirit</li>
+          <li>Encourages mindfulness</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section id="programs" class="programs-section">
+    <div class="section-header">
+      <h2>Our Programs</h2>
+      <p class="section-subtitle">Find your perfect yoga practice</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-image">
+          <img src="{% static 'media/hatha-yoga.jpg' %}" alt="Hatha Yoga">
+          <div class="program-overlay">
+            <a href="/trainer?type=hatha" class="btn-outline">Learn More</a>
+          </div>
+        </div>
+        <div class="program-info">
+          <h3>Hatha Yoga</h3>
+          <p>Traditional practice focusing on physical postures and breathing techniques.</p>
+          <div class="program-meta">
+            <span><i class="fas fa-clock"></i> 60 min sessions</span>
+            <span><i class="fas fa-user"></i> All levels</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-image">
+          <img src="{% static 'media/vinyasa-yoga.jpg' %}" alt="Vinyasa Yoga">
+          <div class="program-overlay">
+            <a href="/trainer?type=vinyasa" class="btn-outline">Learn More</a>
+          </div>
+        </div>
+        <div class="program-info">
+          <h3>Vinyasa Flow</h3>
+          <p>Dynamic movement synchronized with breath for a cardiovascular challenge.</p>
+          <div class="program-meta">
+            <span><i class="fas fa-clock"></i> 75 min sessions</span>
+            <span><i class="fas fa-user"></i> Intermediate</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-image">
+          <img src="{% static 'media/prenatal-yoga.jpg' %}" alt="Prenatal Yoga">
+          <div class="program-overlay">
+            <a href="/trainer?type=prenatal" class="btn-outline">Learn More</a>
+          </div>
+        </div>
+        <div class="program-info">
+          <h3>Prenatal Yoga</h3>
+          <p>Gentle practice designed to support expecting mothers through pregnancy.</p>
+          <div class="program-meta">
+            <span><i class="fas fa-clock"></i> 45 min sessions</span>
+            <span><i class="fas fa-user"></i> Specialized</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-footer">
+      <a href="/teacherTraining" class="btn-primary">View All Programs</a>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="section-header">
+      <h2>Success Stories</h2>
+      <p class="section-subtitle">What our students say</p>
+    </div>
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="quote-icon">
+            <i class="fas fa-quote-left"></i>
+          </div>
+          <p>YogConnect transformed my life. After just 3 months of regular practice, my chronic back pain disappeared and I found mental clarity I never knew was possible.</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="{% static 'media/testimonial1.jpg' %}" alt="Rajesh Kumar">
+          <div>
+            <h4>Rajesh Kumar</h4>
+            <span>Corporate Executive, 42</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="quote-icon">
+            <i class="fas fa-quote-left"></i>
+          </div>
+          <p>The prenatal yoga program was a godsend during my pregnancy. The instructors were incredibly knowledgeable and supportive throughout my journey.</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="{% static 'media/testimonial2.jpg' %}" alt="Priya Sharma">
+          <div>
+            <h4>Priya Sharma</h4>
+            <span>New Mother, 29</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="quote-icon">
+            <i class="fas fa-quote-left"></i>
+          </div>
+          <p>As a complete beginner, I was nervous to start yoga. The teachers at YogConnect made me feel completely at ease and now I can't imagine my life without it!</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="{% static 'media/testimonial3.jpg' %}" alt="Amit Patel">
+          <div>
+            <h4>Amit Patel</h4>
+            <span>College Student, 21</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <div class="section-header">
+      <h2>Our Yoga Community</h2>
+      <p class="section-subtitle">Moments of peace and growth</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="{% static 'media/gallery1.jpg' %}" alt="Yoga class">
+        <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="{% static 'media/gallery2.jpg' %}" alt="Meditation session">
+        <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="{% static 'media/gallery3.jpg' %}" alt="Group yoga">
+        <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="{% static 'media/gallery4.jpg' %}" alt="Yoga outdoors">
+        <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Section -->
+  <section id="consultation" class="consult-section">
+    <div class="consult-content">
+      <h2>Ready to Begin Your Journey?</h2>
+      <p>New to yoga? Let us help you discover the best approach for your unique body, lifestyle, and goals.</p>
+      <form class="consult-form" onsubmit="sendToWhatsApp(event)">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Email Address" required>
+  <input type="tel" name="phone" placeholder="Phone Number">
+  <select name="interest" required>
+    <option value="" disabled selected>I'm interested in...</option>
+    <option>Beginner Classes</option>
+    <option>Private Sessions</option>
+    <option>Teacher Training</option>
+    <option>Corporate Yoga</option>
+    <option>Not Sure - Need Guidance</option>
+  </select>
+  <button type="submit" class="btn-primary">Book Free Consult</button>
+</form>
+    </div>
+    <div class="consult-image">
+      <img src="{% static 'media/consult-yoga.jpg' %}" alt="Yoga consultation" class="floating">
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/916261977998" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
+    <img src="{% static 'media/whatsapp-icon.png' %}" alt="WhatsApp">
+  </a>
+
+  <!-- Footer with Centered Logo and Social Links -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{% static 'media/yogconnect-logo.png' %}" alt="YogConnect Logo">
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="/teacherTraining">Teacher Training</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#consultation">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact Info</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 123 Yoga Street, Raipur, India</li>
+            <li><i class="fas fa-phone"></i> +91 6261977998</li>
+            <li><i class="fas fa-envelope"></i> info@yogconnect.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/master_diwakar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://youtube.com/yogaboy" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 YogConnect. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Background Particles Script -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize particles
+      tsParticles.load("bg-animation", {
+        fullScreen: { enable: true, zIndex: -1 },
+        particles: {
+          number: { value: 50 },
+          color: { value: ["#a1d9c9", "#ffffff"] },
+          shape: { type: "circle" },
+          opacity: { value: 0.3 },
+          size: { value: { min: 2, max: 5 } },
+          move: {
+            enable: true,
+            speed: 0.8,
+            direction: "none",
+            outModes: { default: "out" }
+          }
+        },
+        background: {
+          color: "#f5f7f4"
+        }
+      });
+
+      // Mobile menu toggle functionality
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // Animate stats counting
+      const statNumbers = document.querySelectorAll('.stat-number');
+      const statsSection = document.querySelector('.stats-section');
+      
+      const animateStats = () => {
+        statNumbers.forEach(stat => {
+          const target = +stat.getAttribute('data-count');
+          const duration = 2000;
+          const increment = target / (duration / 16);
+          let current = 0;
+          
+          const updateNumber = () => {
+            current += increment;
+            if (current < target) {
+              stat.textContent = Math.floor(current);
+              requestAnimationFrame(updateNumber);
+            } else {
+              stat.textContent = target;
+            }
+          };
+          
+          updateNumber();
+        });
+      };
+      
+      // Intersection Observer for stats animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      observer.observe(statsSection);
+
+      // Initialize ScrollReveal animations
+      ScrollReveal().reveal('.hero-content, .hero-image', {
+        delay: 200,
+        distance: '50px',
+        origin: 'bottom',
+        interval: 100
+      });
+      
+      ScrollReveal().reveal('.stat-card', {
+        delay: 300,
+        distance: '20px',
+        origin: 'bottom',
+        interval: 100
+      });
+      
+      ScrollReveal().reveal('.about-image, .about-text', {
+        delay: 200,
+        distance: '50px',
+        origin: 'left',
+        interval: 100
+      });
+      
+      ScrollReveal().reveal('.benefit-card, .program-card, .testimonial-card, .gallery-item', {
+        delay: 200,
+        distance: '30px',
+        origin: 'bottom',
+        interval: 100
+      });
+    });
+
+    const dummySearchResults = [
+      "Yoga Trainer in Raipur",
+      "Online Yoga TTC Program",
+      "Prenatal Yoga Course",
+      "Therapeutic Yoga Specialist",
+      "Beginner Morning Yoga Batches"
+    ];
+
+    function handleSearchInput(value) {
+      const dropdown = document.getElementById("popupSearchDropdown");
+      dropdown.innerHTML = "";
+      if (value.trim().length === 0) {
+        dropdown.style.display = "none";
+        return;
+      }
+      const matches = dummySearchResults.filter(item =>
+        item.toLowerCase().includes(value.toLowerCase())
+      );
+      if (matches.length) {
+        matches.forEach(match => {
+          const div = document.createElement("div");
+          div.classList.add("search-item");
+          div.innerText = match;
+          div.onclick = () => window.location.href = "/trainer";
+          dropdown.appendChild(div);
+        });
+        dropdown.style.display = "block";
+      } else {
+        dropdown.style.display = "none";
+      }
+    }
+
+    function toggleSearch(show) {
+      document.getElementById("searchOverlay").style.display = show ? "flex" : "none";
+      if (show) {
+        document.getElementById("popupSearchBox").focus();
+      }
+    }
+
+
+    
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+  
+      // Get form values
+      const form = e.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const phone = form.phone.value || "Not provided";
+      const interest = form.interest.value;
+
+      // Format message (with emojis!)
+      const message = `🌟 *New YogConnect Lead* 🌟
+  
+      🪷 *Name*: ${name}
+      📧 *Email*: ${email}
+      📞 *Phone*: ${phone}  
+      🧘 *Interest*: ${interest}`;
+
+      // Encode for URL and send
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/916261977998?text=${encodedMessage}`, '_blank');
+  
+      // Optional: Reset form after submission
+      form.reset();
+    }
+
+  </script>
+  <script src="{% static 'js/index.js' %}" defer></script>
+</body>
+</html>
